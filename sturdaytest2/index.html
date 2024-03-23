@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        legend{
+            text-align: center;
+            font-size: 30px;
+        }
+        #myform{
+            height: auto;
+            width: 30%;
+            margin: auto;
+            border: 2px solid rgb(205, 205, 205);
+            background-color: rgb(229, 232, 192);
+            padding: 40px;
+            border-radius: 20px;
+        }
+        input{
+            width: 100%;
+            height: 30px;
+        }
+        select{
+            width: 100%;
+            height: 35px;
+        }
+        #image{
+            width: 30%;
+            height: auto;
+            margin: auto;
+            border: 2px solid rgb(205, 205, 205);
+            background-color: rgb(229, 232, 192);
+           text-align: center;
+           
+        }
+        #image>img{
+            width: 90%;
+            padding: 20px;
+        }
+        .sub{
+            background-color: rgb(205, 62, 37);
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="myform">
+        <legend>Registration Form</legend>
+        <label for="name"> Name:</label><br>
+        <input type="text" id="name"><br><br>
+
+        <label for="text">Course: </label><br>
+        <select name="course" id="course" >
+            <option>Select course</option>
+            <option id="full">Full stack</option>
+            <option id="front">Frontend</option>
+            <option id="back">Backend</option>
+            <option id="gim">GIM</option>
+            <option id="uiux">ui/ux</option>
+        </select>  <br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email"><br><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone"><br><br>
+
+        <label for="url">Photo URL:</label><br>
+        <input type="text" id="url"><br><br>
+         
+        <input type="submit" class="sub">
+    </form> <br><br>
+
+    <div id="image">
+
+    </div>
+
+
+</body>
+</html>
+
+<script>
+     let name=document.getElementById("name");
+     let course=document.getElementById("course");
+     let email=document.getElementById("email");
+     let phone=document.getElementById("phone");
+     let url=document.getElementById("url");
+
+     let image=document.getElementById("image");
+
+
+     document.getElementById("myform").addEventListener("submit",function(e){
+        e.preventDefault();
+        
+        let img1=document.createElement("img");
+        img1.src=url.value;
+
+        let name1=document.createElement("h3");
+        name1.innerText=name.value;
+        let course1=document.createElement("h3");
+        course1.innerText=course.value;
+        let email1=document.createElement("h3");
+        email1.innerText=email.value;
+        let phone1=document.createElement("h3");
+        phone1.innerText=phone.value;
+
+        
+        image.append(img1,name1,course1,email1,phone1);
+
+        let obj={
+            name:name.value,
+            course:course.value,
+            email:email.value,
+            phone:phone.value,
+            image:url.value,
+        }
+        console.log(obj);
+
+       if(name.value==""){
+        alert("please fill name");
+       }else if(email.value==""){
+        alert("please fill email");
+       }else if(phone.value==""){
+        alert("please fill phone number");
+       }else if(url.value==""){
+        alert("please fill url");
+       }  
+        
+
+     })
+
+</script>
